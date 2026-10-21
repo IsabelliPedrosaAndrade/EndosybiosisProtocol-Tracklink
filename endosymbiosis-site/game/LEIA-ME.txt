@@ -1,0 +1,16 @@
+PASTA DO JOGO
+=============
+
+Cole aqui DENTRO o CONTEÚDO da pasta exportada do GDevelop
+(a pasta que tem o index.html, o data.js, as imagens etc.).
+
+O certo:
+  game/index.html
+  game/data.js
+  game/...
+
+O errado (pasta duplicada):
+  game/EndoGame_EndosybiosisProtocol/index.html
+
+Não renomeie nem altere nenhum arquivo do jogo.
+Este LEIA-ME pode ser apagado depois, se quiser.

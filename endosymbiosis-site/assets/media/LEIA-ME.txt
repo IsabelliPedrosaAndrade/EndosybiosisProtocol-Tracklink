@@ -1,0 +1,32 @@
+ARQUIVOS DE MÍDIA DO SITE — Endosymbiosis Protocol
+===================================================
+
+Coloque os arquivos NESTA pasta (assets/media/) com EXATAMENTE estes nomes.
+Enquanto um arquivo não existir, a janela mostra "SINAL AUSENTE" sozinha.
+Dica: use nomes sem acento e sem espaço, tudo em minúsculas.
+
+VÍDEOS (.mp4, de preferência curtos, 10 a 30 segundos, sem som, até ~8 MB cada)
+  abertura.mp4      -> 1. INÍCIO       (clipe da abertura no terminal)
+  mundo.mp4         -> 2. O MUNDO      (a estufa / o laboratório)
+  microscopio.mp4   -> 3. COMO SE JOGA (sistema Microscópio)
+  nutrientes.mp4    -> 3. COMO SE JOGA (sistema Nutrientes)
+  energia.mp4       -> 3. COMO SE JOGA (sistema Energia)
+
+IMAGENS (.png ou .jpg)
+  aris.png                -> 2. O MUNDO     (foto 3x4 na ficha do Dr. Aris Valentine)
+  gdevelop-eventos.png    -> 4. BASTIDORES  (print dos eventos no GDevelop)
+  gdevelop-inventario.png -> 4. BASTIDORES  (print do inventário/painel sendo montado)
+  photobashing.png        -> 4. BASTIDORES  (arte com photobashing, antes/depois)
+  ficha-medica.png        -> 4. BASTIDORES  (a tela de load em forma de ficha médica)
+
+OPCIONAL: imagem de capa do vídeo ("poster")
+  No index.html, cada janela tem data-poster="". Para usar, coloque o caminho,
+  por exemplo: data-poster="assets/media/abertura-poster.jpg"
+
+QUER TROCAR VÍDEO POR IMAGEM (ou ao contrário)?
+  No index.html, procure o comentário "MÍDIA (...)" e mude o data-src.
+  Exemplo: data-src="assets/media/mundo.mp4"  ->  data-src="assets/media/mundo.png"
+  O site percebe sozinho se é vídeo ou imagem pela extensão do arquivo.
+
+Se o arquivo for .jpg em vez de .png, troque o nome também no data-src
+(ou no data-src da foto do Aris).

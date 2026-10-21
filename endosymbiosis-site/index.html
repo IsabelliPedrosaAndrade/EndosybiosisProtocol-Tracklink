@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Endosymbiosis Protocol — Tracklink</title>
+  <meta name="description" content="Terror psicológico point-and-click. Você é Dr. Aris Valentine, botânico da Tracklink, e cuida de uma estufa subterrânea com a ajuda da inteligência artificial V.E.R.A. Ciclo 147. Três pendências. Assine o relatório.">
+  <meta name="theme-color" content="#070d0c">
+
+  <!-- Ícone da aba (favicon): logo da Tracklink -->
+  <link rel="icon" type="image/png" href="assets/img/tracklink-logo.png">
+  <link rel="apple-touch-icon" href="assets/img/tracklink-logo.png">
+
+  <!-- OPEN GRAPH (como o link aparece quando é compartilhado no WhatsApp, Instagram etc.)
+       DEPOIS DE PUBLICAR: troque "assets/img/capa.png" em og:image pelo endereço completo,
+       por exemplo: https://endosymbiosis.vercel.app/assets/img/capa.png
+       (alguns apps só mostram a imagem com o endereço completo). -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Tracklink">
+  <meta property="og:title" content="Endosymbiosis Protocol — Tracklink">
+  <meta property="og:description" content="Ciclo 147. Três pendências. Assine o relatório. Terror psicológico point-and-click, sem nenhum susto.">
+  <meta property="og:image" content="assets/img/capa.png">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="Capa de Endosymbiosis Protocol">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" href="assets/fonts/Jersey10.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/fonts/SyneMono.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Marca que o JavaScript está ligado e se a pessoa aceita animações (antes de desenhar a página) -->
+  <script>
+    document.documentElement.classList.add('js');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');
+  </script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#jogar">Pular direto para o jogo</a>
+
+  <!-- Camada de monitor CRT (scanlines, ruído e vinheta). Só decoração. -->
+  <div class="crt" aria-hidden="true"></div>
+
+  <!-- ===================== PAINEL DO TERMINAL (navegação) ===================== -->
+  <nav class="term-nav" aria-label="Seções do site">
+    <div class="nav-head">
+      <img src="assets/img/tracklink-logo.png" alt="" width="40" height="40">
+      <div>
+        <strong>TERMINAL V.E.R.A.</strong>
+        <span>TRACKLINK · CICLO 147</span>
+      </div>
+    </div>
+    <p class="nav-label">SISTEMAS</p>
+    <ol class="nav-list">
+      <li><a class="nav-link" href="#inicio" data-nav="0" data-state="pendente"><span class="n">01</span><span class="name">INÍCIO</span><span class="short">INÍCIO</span><span class="st">PENDENTE</span></a></li>
+      <li><a class="nav-link" href="#mundo" data-nav="1" data-state="pendente"><span class="n">02</span><span class="name">O MUNDO</span><span class="short">MUNDO</span><span class="st">PENDENTE</span></a></li>
+      <li><a class="nav-link" href="#como-se-joga" data-nav="2" data-state="pendente"><span class="n">03</span><span class="name">COMO SE JOGA</span><span class="short">COMO</span><span class="st">PENDENTE</span></a></li>
+      <li><a class="nav-link" href="#bastidores" data-nav="3" data-state="pendente"><span class="n">04</span><span class="name">BASTIDORES</span><span class="short">BASTID.</span><span class="st">PENDENTE</span></a></li>
+      <li><a class="nav-link" href="#ficha" data-nav="4" data-state="pendente"><span class="n">05</span><span class="name">FICHA DO JOGO</span><span class="short">FICHA</span><span class="st">PENDENTE</span></a></li>
+      <li><a class="nav-link" href="#capitulos" data-nav="5" data-state="pendente"><span class="n">06</span><span class="name">CAPÍTULOS</span><span class="short">CAPÍT.</span><span class="st">PENDENTE</span></a></li>
+    </ol>
+    <a class="nav-link nav-report" href="#jogar" data-nav="6" data-state="bloqueado">
+      <span class="n">07</span><span class="name">RELATÓRIO:</span><span class="short">JOGAR</span><span class="st">BLOQUEADO</span>
+    </a>
+    <p class="nav-foot"><kbd>↑</kbd><kbd>↓</kbd> navegar · <kbd>P</kbd> apresentação</p>
+  </nav>
+
+  <!-- Indicador de progresso no canto -->
+  <div class="hud">
+    <p class="hud-count"><span class="sr-only">Seção atual: </span>SEÇÃO <b id="hudN">1</b>/7 <span class="hud-name" id="hudName">INÍCIO</span></p>
+    <button class="hud-btn" id="presentBtn" type="button" aria-pressed="false" title="Modo apresentação (tecla P)"><span class="lbl">APRESENTAR [P]</span></button>
+  </div>
+
+  <main id="conteudo">
+
+    <!-- ============================== 1. INÍCIO ============================== -->
+    <section class="screen hero" id="inicio" data-name="INÍCIO" aria-labelledby="t-inicio">
+      <div class="wrap hero-grid">
+        <div class="hero-text">
+          <div class="boot" aria-hidden="true">
+            <p>TRACKLINK // TERMINAL INTERNO V.E.R.A. — v1.47</p>
+            <p>&gt; verificando estufa ............ <span class="ok">OK</span></p>
+            <p>&gt; verificando operador .......... <span class="ok">OK</span></p>
+            <p>&gt; carregando expediente ......... <span class="warn">3 PENDÊNCIAS</span></p>
+          </div>
+
+          <p class="typed" data-type="CICLO 147. TRÊS PENDÊNCIAS. ASSINE O RELATÓRIO.">
+            <span class="sr-only">CICLO 147. TRÊS PENDÊNCIAS. ASSINE O RELATÓRIO.</span><span class="typed-out" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span>
+          </p>
+
+          <h1 id="t-inicio" class="hero-title" aria-label="Endosymbiosis Protocol">
+            <span class="glitch" data-text="ENDOSYMBIOSIS">ENDOSYMBIOSIS</span>
+            <span class="glitch" data-text="PROTOCOL">PROTOCOL</span>
+          </h1>
+          <p class="hero-sub">terror psicológico point-and-click <span>capítulo 1</span></p>
+
+          <div class="hero-actions">
+            <a class="btn" href="#jogar">▶ Jogar agora</a>
+            <a class="btn btn-ghost" href="#mundo">Conhecer o jogo</a>
+          </div>
+
+          <p class="credits">
+            <img src="assets/img/tracklink-logo.png" alt="" width="22" height="22">
+            <span>Feito por <strong>TRACKLINK</strong> — Isabelli Pedrosa · Sophia Barros · Letícia Alencar · Camily Souza</span>
+          </p>
+        </div>
+
+        <!-- MÍDIA (INÍCIO): coloque o clipe da abertura do terminal em assets/media/abertura.mp4
+             Para usar uma imagem no lugar, troque data-src por, por exemplo, "assets/media/abertura.png".
+             data-poster (opcional) = imagem que aparece antes do vídeo carregar. -->
+        <figure class="mwin mwin-lg" data-title="REGISTRO_00 — ABERTURA_TERMINAL.MP4" data-src="assets/media/abertura.mp4" data-poster="" data-alt="Clipe da abertura do jogo: texto verde sendo digitado num terminal com efeito CRT"></figure>
+      </div>
+      <a class="scroll-cue" href="#mundo">continuar ↓</a>
+    </section>
+
+    <!-- ============================== 2. O MUNDO ============================== -->
+    <section class="screen" id="mundo" data-name="O_MUNDO" aria-labelledby="t-mundo">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="cmd"><span class="prompt">&gt;</span> acessar registro: <b>O_MUNDO</b><span class="caret" aria-hidden="true"></span></p>
+          <h2 id="t-mundo" class="sec-title glitch" data-text="O MUNDO">O MUNDO</h2>
+          <p class="lede">Um laboratório subterrâneo. Uma estufa que precisa de cuidados. Um funcionário, uma inteligência artificial e um turno de trabalho igual a todos os outros.</p>
+        </header>
+
+        <div class="mundo-grid">
+          <div class="term-block reveal">
+            <p>Você é <strong>Dr. Aris Valentine</strong>, botânico da Tracklink. Sua função é manter a estufa funcionando, uma tarefa por vez, com o acompanhamento da V.E.R.A.</p>
+            <p>Nada no expediente é fora do comum. Só alguns detalhes não batem, e o jogo não explica nenhum deles. Quando você pergunta, a V.E.R.A. consulta o banco de registro. As respostas não batem com o que você lembra.</p>
+            <blockquote class="vera">
+              <p>BOM DIA, DR. VALENTINE. CONSTAM TRÊS PENDÊNCIAS NO SEU EXPEDIENTE.</p>
+            </blockquote>
+            <ul class="no-list" aria-label="O que o jogo não tem">
+              <li>SEM COMBATE</li>
+              <li>SEM PRESSA</li>
+              <li>SEM JUMPSCARE</li>
+            </ul>
+            <p class="small">Sem segunda chance de não ter visto.</p>
+          </div>
+
+          <!-- MÍDIA (O MUNDO): coloque assets/media/mundo.mp4 (por exemplo, o jogador andando pela estufa) -->
+          <figure class="mwin reveal" data-title="REGISTRO_01 — ESTUFA_SUBTERRANEA.MP4" data-src="assets/media/mundo.mp4" data-poster="" data-alt="Gravação da estufa subterrânea dentro do jogo"></figure>
+        </div>
+
+        <div class="docs">
+          <!-- Documento 1: ficha do funcionário -->
+          <article class="doc reveal" style="--tilt:-1.6deg">
+            <span class="clip" aria-hidden="true"></span>
+            <p class="doc-org">TRACKLINK · RECURSOS HUMANOS</p>
+            <h3>FICHA DE FUNCIONÁRIO</h3>
+            <div class="ficha-body">
+              <!-- FOTO DO ARIS: coloque assets/media/aris.png (se for .jpg, troque o nome aqui embaixo) -->
+              <div class="photo" data-src="assets/media/aris.png" data-alt="Foto de identificação de Dr. Aris Valentine">
+                <span aria-hidden="true">FOTO<br>3×4</span>
+              </div>
+              <dl class="fields">
+                <div><dt>Nome</dt><dd>Dr. Aris Valentine</dd></div>
+                <div><dt>Cargo</dt><dd>Botânico responsável</dd></div>
+                <div><dt>Lotação</dt><dd>Estufa subterrânea</dd></div>
+                <div><dt>Turno</dt><dd>Ciclo 147</dd></div>
+                <div><dt>Assistência</dt><dd>V.E.R.A.</dd></div>
+                <div><dt>Situação</dt><dd>Em serviço</dd></div>
+              </dl>
+            </div>
+            <p class="doc-note">Obs.: <button class="redact" type="button" aria-label="Trecho censurado: pontual, nenhuma ocorrência registrada">pontual, nenhuma ocorrência registrada</button></p>
+            <span class="stamp" style="--r:-9deg">CONFIDENCIAL</span>
+          </article>
+
+          <!-- Documento 2: ficha da V.E.R.A. -->
+          <article class="doc reveal" style="--tilt:1.2deg">
+            <span class="tape" aria-hidden="true"></span>
+            <p class="doc-org">TRACKLINK · FICHA DE SISTEMA</p>
+            <h3>V.E.R.A.</h3>
+            <dl class="fields">
+              <div><dt>Função</dt><dd>Assistência de laboratório</dd></div>
+              <div><dt>Resposta</dt><dd>EM MAIÚSCULAS</dd></div>
+              <div><dt>Registros falsos</dt><dd>Nenhum</dd></div>
+              <div><dt>Registra</dt><dd>Tudo o que cabe num formulário</dd></div>
+              <div><dt>Sigla</dt><dd><button class="redact" type="button" aria-label="Trecho censurado: não se aplica a este formulário">não se aplica a este formulário</button></dd></div>
+              <div><dt>Instalação</dt><dd><button class="redact" type="button" aria-label="Trecho censurado: data consta no arquivo">data consta no arquivo</button></dd></div>
+            </dl>
+            <blockquote class="vera vera-paper">
+              <p>EU NÃO MINTO, DOUTOR. EU CONSULTO O REGISTRO.</p>
+            </blockquote>
+            <span class="stamp stamp-low" style="--r:6deg">CICLO 147</span>
+          </article>
+
+          <!-- Documento 3: dossiê da empresa -->
+          <article class="doc reveal" style="--tilt:0.8deg">
+            <span class="clip" aria-hidden="true"></span>
+            <p class="doc-org">DOSSIÊ · USO INTERNO</p>
+            <h3 class="doc-brand"><img src="assets/img/tracklink-logo.png" alt="" width="34" height="34"> TRACKLINK</h3>
+            <p>Empresa farmacêutica. Pesquisa vegetal em ambiente controlado.</p>
+            <p>A Tracklink mantém unidades onde tudo pode ser medido, ajustado e registrado. Cada unidade tem um responsável, uma rotina e um relatório por ciclo.</p>
+            <p>Lembramos que o relatório só é aceito com todas as pendências concluídas.</p>
+            <p class="doc-note">Unidades em operação: <button class="redact" type="button" aria-label="Trecho censurado: informação de uso interno">informação de uso interno</button></p>
+            <span class="stamp" style="--r:-12deg">ARQUIVADO</span>
+          </article>
+
+          <!-- Documento 4: verbete de dicionário -->
+          <article class="doc doc-dict reveal" style="--tilt:-0.9deg">
+            <span class="tape" aria-hidden="true"></span>
+            <p class="doc-org">DICIONÁRIO DE BIOLOGIA · p. 147</p>
+            <h3><dfn>en·dos·sim·bi·o·se</dfn> <small>s.f.</small></h3>
+            <p><b>1.</b> <i>Biol.</i> Relação em que um organismo passa a viver dentro de outro, até que os dois se tornem um só.</p>
+            <p class="etym">Do grego <i>éndon</i>, “dentro”, + <i>symbíōsis</i>, “vida em comum”.</p>
+            <p class="handnote">o porquê do nome fica para quem jogar.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 3. COMO SE JOGA ============================== -->
+    <section class="screen" id="como-se-joga" data-name="COMO_SE_JOGA" aria-labelledby="t-como">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="cmd"><span class="prompt">&gt;</span> executar: <b>COMO_SE_JOGA.exe</b><span class="caret" aria-hidden="true"></span></p>
+          <h2 id="t-como" class="sec-title glitch" data-text="COMO SE JOGA">COMO SE JOGA</h2>
+          <p class="lede">O capítulo 1 é um expediente. Três sistemas no terminal precisam ser concluídos: Microscópio, Nutrientes e Energia. Todo puzzle é um sistema de verdade do laboratório. O relatório só pode ser assinado no fim.</p>
+        </header>
+
+        <div class="modules">
+          <article class="module reveal">
+            <header class="module-head">
+              <span class="px-icon" data-icon="micro"></span>
+              <div><p class="module-id">SISTEMA 01</p><h3>MICROSCÓPIO</h3></div>
+              <span class="badge">PENDENTE</span>
+            </header>
+            <p>Coletar uma amostra da planta e analisá-la. O resultado é um número. O número abre um cofre.</p>
+            <p class="module-meta">ETAPA GUIADA</p>
+            <!-- MÍDIA (MICROSCÓPIO): coloque assets/media/microscopio.mp4 -->
+            <figure class="mwin" data-title="REGISTRO_02 — MICROSCOPIO.MP4" data-src="assets/media/microscopio.mp4" data-poster="" data-alt="Gravação do puzzle do microscópio"></figure>
+          </article>
+
+          <article class="module reveal">
+            <header class="module-head">
+              <span class="px-icon" data-icon="drop"></span>
+              <div><p class="module-id">SISTEMA 02</p><h3>NUTRIENTES</h3></div>
+              <span class="badge">PENDENTE</span>
+            </header>
+            <p>O que a estufa entrega à planta. Liberado depois da etapa guiada e resolvido na ordem que você quiser.</p>
+            <p class="module-meta">ORDEM LIVRE</p>
+            <!-- MÍDIA (NUTRIENTES): coloque assets/media/nutrientes.mp4 -->
+            <figure class="mwin" data-title="REGISTRO_03 — NUTRIENTES.MP4" data-src="assets/media/nutrientes.mp4" data-poster="" data-alt="Gravação do sistema de nutrientes"></figure>
+          </article>
+
+          <article class="module reveal">
+            <header class="module-head">
+              <span class="px-icon" data-icon="bolt"></span>
+              <div><p class="module-id">SISTEMA 03</p><h3>ENERGIA</h3></div>
+              <span class="badge">PENDENTE</span>
+            </header>
+            <p>A energia do laboratório subterrâneo. Também em ordem livre. Sem energia, nada é registrado.</p>
+            <p class="module-meta">ORDEM LIVRE</p>
+            <!-- MÍDIA (ENERGIA): coloque assets/media/energia.mp4 -->
+            <figure class="mwin" data-title="REGISTRO_04 — ENERGIA.MP4" data-src="assets/media/energia.mp4" data-poster="" data-alt="Gravação do sistema de energia"></figure>
+          </article>
+        </div>
+
+        <!-- Diagrama: cadeia de puzzles -->
+        <div class="panel chain-panel reveal">
+          <h3 class="panel-title">CADEIA DE PUZZLES</h3>
+          <div class="chain">
+            <div class="zone zone-guided">
+              <p class="zone-label">GUIADO</p>
+              <ol class="steps">
+                <li class="step"><span class="px-icon" data-icon="tube"></span>AMOSTRA</li>
+                <li class="step"><span class="px-icon" data-icon="micro"></span>MICROSCÓPIO</li>
+                <li class="step"><span class="num" aria-label="número oculto">Nº ████</span>NÚMERO</li>
+                <li class="step"><span class="px-icon" data-icon="safe"></span>COFRE</li>
+              </ol>
+            </div>
+            <span class="chain-arrow" aria-hidden="true">▶</span>
+            <div class="zone zone-open">
+              <p class="zone-label">ORDEM LIVRE</p>
+              <ul class="steps steps-free">
+                <li class="step"><span class="px-icon" data-icon="drop"></span>NUTRIENTES</li>
+                <li class="step"><span class="px-icon" data-icon="bolt"></span>ENERGIA</li>
+              </ul>
+            </div>
+            <span class="chain-arrow" aria-hidden="true">▶</span>
+            <div class="zone zone-end">
+              <p class="zone-label">FIM DO EXPEDIENTE</p>
+              <ul class="steps steps-free">
+                <li class="step"><span class="px-icon" data-icon="plant"></span>STATUS DA PLANTA<small>calculado a partir de dois sistemas</small></li>
+                <li class="step step-sign">ASSINAR RELATÓRIO</li>
+              </ul>
+            </div>
+          </div>
+          <p class="chain-text">A primeira metade conduz pela mão: uma amostra, uma análise, um número, um cofre. Depois disso, o laboratório se abre e a ordem fica com você. O quarto status, o da planta, não se resolve sozinho: ele é calculado a partir de dois dos sistemas.</p>
+        </div>
+
+        <div class="duo">
+          <!-- Inventário -->
+          <div class="panel inv-panel reveal">
+            <h3 class="panel-title">INVENTÁRIO</h3>
+            <div class="inv-stats">
+              <div><b>11</b><span>itens</span></div>
+              <div><b>10</b><span>espaços</span></div>
+              <div><b>2</b><span>usos, em alguns</span></div>
+            </div>
+            <div class="inv-grid" role="group" aria-label="Demonstração do inventário: 10 espaços. Clique num item para selecioná-lo.">
+              <button class="slot" type="button" aria-pressed="false" aria-label="Item: amostra"><span class="px-icon" data-icon="tube"></span></button>
+              <button class="slot" type="button" aria-pressed="false" aria-label="Item: luz UV"><span class="px-icon" data-icon="uv"></span></button>
+              <button class="slot" type="button" aria-pressed="false" aria-label="Item: anotação"><span class="px-icon" data-icon="note"></span></button>
+              <button class="slot" type="button" aria-pressed="false" aria-label="Item não identificado"><span class="px-icon" data-icon="unknown"></span></button>
+              <span class="slot empty" aria-hidden="true"></span>
+              <span class="slot empty" aria-hidden="true"></span>
+              <span class="slot empty" aria-hidden="true"></span>
+              <span class="slot empty" aria-hidden="true"></span>
+              <span class="slot empty" aria-hidden="true"></span>
+              <span class="slot empty" aria-hidden="true"></span>
+            </div>
+            <ul class="inv-legend">
+              <li><kbd>CLIQUE</kbd> seleciona um item</li>
+              <li><kbd>ARRASTE</kbd> um item sobre o outro para combinar</li>
+            </ul>
+            <blockquote class="vera"><p>CADA OBJETO TEM UM USO. ALGUNS TÊM DOIS.</p></blockquote>
+          </div>
+
+          <!-- Controles -->
+          <div class="panel controls reveal">
+            <h3 class="panel-title">CONTROLES</h3>
+            <div class="ctrl">
+              <span class="px-icon" data-icon="mouse"></span>
+              <div>
+                <p class="ctrl-name">MOUSE</p>
+                <p>Clique para examinar, interagir e selecionar itens. Arraste um item sobre o outro para combinar.</p>
+              </div>
+            </div>
+            <div class="ctrl">
+              <span class="px-icon" data-icon="keyboard"></span>
+              <div>
+                <p class="ctrl-name">TECLADO</p>
+                <p>Digite seu nome na abertura do terminal. Ele fica salvo.</p>
+                <p><kbd>M</kbd> abre o menu de save.</p>
+              </div>
+            </div>
+            <p class="small">Recomendado: computador, fone de ouvido e nenhuma pressa.</p>
+          </div>
+        </div>
+
+        <!-- Destaques -->
+        <div class="extras">
+          <div class="panel uv-panel reveal">
+            <h3 class="panel-title"><span class="px-icon px-inline" data-icon="uv"></span> LUZ UV</h3>
+            <div class="uv-wall" id="uvWall" role="img" aria-label="Parede iluminada por luz UV, com uma mancha escondida onde se lê: a planta reage à luz">
+              <p class="uv-secret" aria-hidden="true">a planta reage à luz</p>
+              <p class="uv-hint" aria-hidden="true">passe o mouse ou toque para iluminar</p>
+            </div>
+            <p>Revela manchas escondidas nas paredes. O que a luz mostra não estava no relatório.</p>
+          </div>
+
+          <article class="doc note reveal" style="--tilt:-2deg">
+            <span class="tape" aria-hidden="true"></span>
+            <h3><span class="px-icon px-inline" data-icon="drawer"></span> GAVETAS</h3>
+            <p>Anotações esquecidas no fundo das gavetas. Nenhuma está assinada. Ninguém pediu para você ler.</p>
+            <p class="handnote">leia mesmo assim.</p>
+          </article>
+
+          <article class="doc note reveal" style="--tilt:1.6deg">
+            <span class="clip" aria-hidden="true"></span>
+            <h3><span class="px-icon px-inline" data-icon="lock"></span> FECHADURAS</h3>
+            <p>Algumas gavetas não abrem por bem. Para forçá-las, o que você precisa já está em algum lugar do laboratório.</p>
+            <span class="stamp stamp-low" style="--r:-7deg">TRANCADO</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 4. BASTIDORES ============================== -->
+    <section class="screen" id="bastidores" data-name="BASTIDORES" aria-labelledby="t-bast">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="cmd"><span class="prompt">&gt;</span> abrir pasta: <b>BASTIDORES/</b><span class="caret" aria-hidden="true"></span></p>
+          <h2 id="t-bast" class="sec-title glitch" data-text="BASTIDORES">BASTIDORES</h2>
+          <p class="lede">Como o jogo foi feito. Anotações da equipe, arquivadas junto com o resto.</p>
+        </header>
+
+        <article class="doc doc-question reveal" style="--tilt:-0.8deg">
+          <span class="tape" aria-hidden="true"></span>
+          <p class="doc-org">NOTA 00 · A PERGUNTA</p>
+          <p class="question">“Dá para fazer um jogo de terror sem nenhum susto?”</p>
+          <p>A inspiração principal foi <b>Rusty Lake</b>, com um pouco de <b>No, I'm Not a Human</b>. O terror vem da construção psicológica, não do susto.</p>
+          <span class="stamp" style="--r:-6deg">APROVADO</span>
+        </article>
+
+        <div class="notes">
+          <article class="doc note reveal">
+            <span class="tape" aria-hidden="true"></span>
+            <p class="note-n">NOTA 01</p>
+            <h3>GDEVELOP 5</h3>
+            <p>O jogo foi feito no GDevelop, que funciona por eventos e condições: <i>quando isto acontecer, faça aquilo</i>.</p>
+          </article>
+          <article class="doc note reveal">
+            <span class="clip" aria-hidden="true"></span>
+            <p class="note-n">NOTA 02</p>
+            <h3>DO ZERO</h3>
+            <p>O inventário, os cliques e o painel do terminal foram montados do zero, condição por condição.</p>
+          </article>
+          <article class="doc note reveal">
+            <span class="tape" aria-hidden="true"></span>
+            <p class="note-n">NOTA 03</p>
+            <h3>UM SÓ LUGAR</h3>
+            <p>Cada sistema é uma variável, e o progresso fica num só lugar: o painel do terminal. O jogador sempre sabe o que falta, sem tutorial.</p>
+          </article>
+          <article class="doc note reveal">
+            <span class="clip" aria-hidden="true"></span>
+            <p class="note-n">NOTA 04</p>
+            <h3>PHOTOBASHING</h3>
+            <p>A arte foi feita com edição de imagem e photobashing: juntando fotos e pintando por cima até chegar no clima do laboratório.</p>
+          </article>
+          <article class="doc note reveal">
+            <span class="tape" aria-hidden="true"></span>
+            <p class="note-n">NOTA 05</p>
+            <h3>SÓ TEXTO</h3>
+            <p>A abertura não tem imagem nenhuma. É só texto num terminal, com efeitos de CRT, Bloom e Glitch.</p>
+          </article>
+          <article class="doc note reveal">
+            <span class="clip" aria-hidden="true"></span>
+            <p class="note-n">NOTA 06</p>
+            <h3>O NOME FICA</h3>
+            <p>O nome que o jogador digita na abertura fica salvo para os próximos capítulos.</p>
+          </article>
+          <article class="doc note reveal">
+            <span class="tape" aria-hidden="true"></span>
+            <p class="note-n">NOTA 07</p>
+            <h3>FICHA MÉDICA</h3>
+            <p>A tela de carregar jogo é uma ficha médica. No lugar de “tempo de jogo”, ela mostra <b>“tempo em observação”</b>.</p>
+            <span class="stamp stamp-low" style="--r:8deg">ARQUIVADO</span>
+          </article>
+        </div>
+
+        <h3 class="gallery-title"><span class="prompt">&gt;</span> listar: capturas/</h3>
+        <div class="gallery">
+          <!-- MÍDIA (BASTIDORES 1): print dos eventos no GDevelop → assets/media/gdevelop-eventos.png -->
+          <figure class="mwin reveal" data-title="CAPTURA_01 — EVENTOS.PNG" data-src="assets/media/gdevelop-eventos.png" data-alt="Print da tela de eventos do GDevelop" data-caption="Eventos e condições no GDevelop"></figure>
+          <!-- MÍDIA (BASTIDORES 2): print do inventário/painel sendo montado → assets/media/gdevelop-inventario.png -->
+          <figure class="mwin reveal" data-title="CAPTURA_02 — INVENTARIO.PNG" data-src="assets/media/gdevelop-inventario.png" data-alt="Print da montagem do inventário no GDevelop" data-caption="Inventário e painel do terminal, montados do zero"></figure>
+          <!-- MÍDIA (BASTIDORES 3): antes/depois do photobashing → assets/media/photobashing.png -->
+          <figure class="mwin reveal" data-title="CAPTURA_03 — PHOTOBASHING.PNG" data-src="assets/media/photobashing.png" data-alt="Etapas da arte feita com photobashing" data-caption="Arte com photobashing"></figure>
+          <!-- MÍDIA (BASTIDORES 4): a tela de load (ficha médica) → assets/media/ficha-medica.png -->
+          <figure class="mwin reveal" data-title="CAPTURA_04 — FICHA_MEDICA.PNG" data-src="assets/media/ficha-medica.png" data-alt="Tela de carregar jogo em formato de ficha médica" data-caption="Tela de load: “tempo em observação”"></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 5. FICHA DO JOGO ============================== -->
+    <section class="screen" id="ficha" data-name="FICHA_TECNICA" aria-labelledby="t-ficha">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="cmd"><span class="prompt">&gt;</span> imprimir: <b>FICHA_TECNICA</b><span class="caret" aria-hidden="true"></span></p>
+          <h2 id="t-ficha" class="sec-title glitch" data-text="FICHA DO JOGO">FICHA DO JOGO</h2>
+        </header>
+
+        <div class="ficha-grid">
+          <article class="doc label reveal" style="--tilt:-0.6deg">
+            <span class="hole" aria-hidden="true"></span>
+            <p class="doc-org">ARQUIVO Nº 147 · FICHA DO JOGO</p>
+            <h3>ENDOSYMBIOSIS PROTOCOL</h3>
+            <dl class="label-rows">
+              <div><dt>Gênero</dt><dd>Terror psicológico · point-and-click</dd></div>
+              <div><dt>Plataforma</dt><dd>Navegador · computador</dd></div>
+              <div><dt>Controles</dt><dd>Mouse + teclado</dd></div>
+              <!-- DURAÇÃO: confira e troque este valor se precisar -->
+              <div><dt>Duração</dt><dd>≈ 30 min por capítulo</dd></div>
+              <div><dt>Capítulos</dt><dd>1 jogável · 2 em desenvolvimento</dd></div>
+              <div><dt>Motor</dt><dd>GDevelop 5</dd></div>
+              <div><dt>Resolução</dt><dd>1920 × 1080 (16:9)</dd></div>
+              <div><dt>Equipe</dt><dd>Tracklink: Isabelli Pedrosa, Sophia Barros, Letícia Alencar e Camily Souza</dd></div>
+            </dl>
+            <div class="label-foot">
+              <span class="barcode" aria-hidden="true"></span>
+              <span class="code">TL-EP-0147</span>
+            </div>
+            <span class="stamp" style="--r:-10deg">CICLO 147</span>
+          </article>
+
+          <div class="ficha-side reveal">
+            <figure class="pinned">
+              <span class="tape" aria-hidden="true"></span>
+              <img src="assets/img/capa.png" alt="Capa de Endosymbiosis Protocol: um homem de jaleco branco sentado numa poltrona, com um rosto pálido ao fundo" loading="lazy" width="1920" height="1080">
+              <figcaption>anexo: capa</figcaption>
+            </figure>
+            <blockquote class="vera"><p>FICHA CONFERIDA. NENHUMA DIVERGÊNCIA ENCONTRADA.</p></blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 6. CAPÍTULOS ============================== -->
+    <section class="screen" id="capitulos" data-name="CAPITULOS" aria-labelledby="t-cap">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="cmd"><span class="prompt">&gt;</span> consultar: <b>CAPITULOS.log</b><span class="caret" aria-hidden="true"></span></p>
+          <h2 id="t-cap" class="sec-title glitch" data-text="CAPÍTULOS">CAPÍTULOS</h2>
+        </header>
+
+        <ol class="timeline">
+          <li class="tl-item done reveal">
+            <p class="tl-status">CONCLUÍDO — JOGÁVEL</p>
+            <h3>CAPÍTULO 1</h3>
+            <p>Um expediente completo. Três sistemas, um relatório, nenhuma explicação.</p>
+          </li>
+          <li class="tl-item dev reveal">
+            <p class="tl-status">EM DESENVOLVIMENTO</p>
+            <h3 class="glitch glitch-loop" data-text="CAPÍTULO 2">CAPÍTULO 2</h3>
+            <p>Começa no mesmo turno de trabalho. Desta vez, <span class="flicker">o sistema começa a falhar</span>.</p>
+          </li>
+          <li class="tl-item na reveal">
+            <p class="tl-status">[DADOS INDISPONÍVEIS]</p>
+            <h3>CAPÍTULO 3</h3>
+            <p class="bars" aria-label="Conteúdo indisponível"><span style="width:82%"></span><span style="width:56%"></span></p>
+          </li>
+          <li class="tl-item na reveal">
+            <p class="tl-status">[DADOS INDISPONÍVEIS]</p>
+            <h3>CAPÍTULO ?</h3>
+            <p class="bars" aria-label="Conteúdo indisponível"><span style="width:64%"></span></p>
+          </li>
+        </ol>
+        <blockquote class="vera vera-wide reveal"><p>SEU NOME FOI REGISTRADO PARA OS PRÓXIMOS CICLOS.</p></blockquote>
+      </div>
+    </section>
+
+    <!-- ============================== 7. JOGAR ============================== -->
+    <section class="screen play" id="jogar" data-name="RELATORIO" aria-labelledby="t-jogar">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="cmd"><span class="prompt">&gt;</span> assinar: <b>RELATORIO_CICLO_147</b><span class="caret" aria-hidden="true"></span></p>
+          <h2 id="t-jogar" class="sec-title glitch" data-text="JOGAR">JOGAR</h2>
+          <p class="lede">Três pendências esperam por você. Use mouse e teclado. Dentro do jogo, a tecla <kbd>M</kbd> abre o menu de save.</p>
+        </header>
+
+        <div class="play-grid">
+          <div class="monitor">
+            <div class="monitor-bar" aria-hidden="true">
+              <span class="mwin-dot"></span>
+              <span class="mwin-title">TERMINAL_07 — ENDOSYMBIOSIS_PROTOCOL.EXE</span>
+              <span class="led">● ONLINE</span>
+            </div>
+
+            <div class="game-stage" id="gameStage">
+              <!-- O jogo. O endereço (src) só é colocado quando a pessoa clica em "Iniciar protocolo". -->
+              <iframe id="gameFrame" title="Endosymbiosis Protocol — jogo" allow="fullscreen; autoplay; gamepad" allowfullscreen tabindex="-1"></iframe>
+
+              <div class="game-cover" id="gameCover">
+                <img src="assets/img/capa.png" alt="" loading="lazy" width="1920" height="1080">
+                <div class="cover-ui">
+                  <button class="btn btn-big" id="startGame" type="button">▶ INICIAR PROTOCOLO</button>
+                  <p class="cover-note">Carrega cerca de 54 MB. O som liga junto.</p>
+                  <p class="cover-error" id="gameError" role="alert" hidden></p>
+                </div>
+              </div>
+
+              <!-- Aviso que aparece só no celular -->
+              <div class="mobile-block" id="mobileBlock">
+                <p class="deny-title glitch" data-text="ACESSO NEGADO">ACESSO NEGADO</p>
+                <p class="deny-sub">TERMINAL MÓVEL NÃO AUTORIZADO.</p>
+                <p>Este protocolo exige mouse e teclado. Salve o link e acesse de um computador.</p>
+                <div class="deny-actions">
+                  <button class="btn" type="button" data-copy>Copiar link</button>
+                  <button class="btn btn-ghost" type="button" data-share hidden>Compartilhar</button>
+                </div>
+                <button class="link-btn" id="tryAnyway" type="button">tentar mesmo assim (54 MB)</button>
+              </div>
+
+              <p class="fs-hint" aria-hidden="true">ESC para sair da tela cheia</p>
+            </div>
+
+            <div class="monitor-foot">
+              <button class="btn btn-small" id="fsBtn" type="button">⛶ Tela cheia</button>
+              <p class="hint">ESC sai da tela cheia · <kbd>M</kbd> abre o menu de save</p>
+            </div>
+          </div>
+
+          <aside class="panel share-panel" aria-labelledby="t-share">
+            <h3 class="panel-title" id="t-share">GUARDAR ACESSO</h3>
+            <p>Está no celular? Guarde o link e jogue depois, no computador.</p>
+            <button class="btn" type="button" data-copy>Copiar link do site</button>
+            <button class="btn btn-ghost" type="button" data-share hidden>Compartilhar</button>
+
+            <!-- QR CODE: para trocar o placeholder pela imagem do QR code,
+                 1) salve a imagem como assets/img/qrcode.png
+                 2) apague a linha <div class="qr-placeholder">...</div> abaixo
+                 3) no lugar dela, cole:
+                    <img src="assets/img/qrcode.png" alt="QR code para abrir o site do jogo" width="200" height="200"> -->
+            <div class="qr">
+              <div class="qr-placeholder" aria-label="QR code em breve"><span>QR CODE</span><small>— em breve —</small></div>
+            </div>
+          </aside>
+        </div>
+
+        <footer class="site-foot">
+          <img src="assets/img/tracklink-logo.png" alt="Logo da Tracklink" width="36" height="36" loading="lazy">
+          <div>
+            <p><strong>TRACKLINK</strong> · <span id="year">2026</span></p>
+            <p>Isabelli Pedrosa · Sophia Barros · Letícia Alencar · Camily Souza</p>
+            <p>Endosymbiosis Protocol · feito com GDevelop 5</p>
+          </div>
+          <p class="foot-end">FIM DO REGISTRO<span class="caret" aria-hidden="true"></span></p>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
