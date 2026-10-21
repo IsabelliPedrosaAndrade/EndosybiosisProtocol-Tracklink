@@ -196,7 +196,7 @@ html.motion .caret { animation: blink 1.05s steps(1) infinite; }
 .btn:hover { filter: brightness(1.15); }
 .btn:active { transform: translateY(2px); }
 .btn:focus-visible { outline-offset: 7px; }
-.btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+.btn[disabled], .btn[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; }
 
 .btn-ghost {
   color: var(--teal);

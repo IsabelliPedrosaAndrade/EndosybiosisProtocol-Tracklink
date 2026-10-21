@@ -1,0 +1,12 @@
+DOWNLOAD DO JOGO PARA PC
+========================
+
+Coloque aqui o jogo exportado para Windows, compactado em .zip, com o nome:
+  EndosymbiosisProtocol-Windows.zip
+
+Como gerar no GDevelop:
+  Arquivo > Exportar > "Windows, macOS & Linux" (versão para computador).
+  Escolha Windows. O GDevelop gera um .zip (ou um instalador .exe).
+
+Se o arquivo for grande demais para a Vercel, publique no itch.io ou no
+GitHub Releases e troque o href do botão no index.html pelo link de lá.

@@ -712,6 +712,26 @@
     }
   });
 
+  /* ---------------------------------------------------------
+     Download para PC: se o arquivo ainda não existe, mostra "em breve"
+     --------------------------------------------------------- */
+  var dl = $('#downloadBtn');
+  if (dl) {
+    var setSoon = function () {
+      dl.setAttribute('aria-disabled', 'true');
+      dl.removeAttribute('download');
+      dl.textContent = 'Download para PC: em breve';
+      dl.addEventListener('click', function (e) { e.preventDefault(); toast('DOWNLOAD AINDA NÃO DISPONÍVEL'); });
+    };
+    var href = dl.getAttribute('href') || '';
+    if (location.protocol === 'file:') setSoon();
+    else if (!/^https?:/i.test(href)) {
+      fetch(href, { method: 'HEAD', cache: 'no-store' })
+        .then(function (r) { if (!r.ok) setSoon(); })
+        .catch(setSoon);
+    }
+  }
+
   // Ano no rodapé
   var year = $('#year');
   if (year) year.textContent = new Date().getFullYear();
