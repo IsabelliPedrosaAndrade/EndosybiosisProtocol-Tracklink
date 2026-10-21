@@ -26,7 +26,6 @@
   <meta property="og:image:alt" content="Capa de Endosymbiosis Protocol">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="preload" href="assets/fonts/Jersey10.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="assets/fonts/SyneMono.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="css/style.css">
 
@@ -59,17 +58,16 @@
       <li><a class="nav-link" href="#como-se-joga" data-nav="2" data-state="pendente"><span class="n">03</span><span class="name">COMO SE JOGA</span><span class="short">COMO</span><span class="st">PENDENTE</span></a></li>
       <li><a class="nav-link" href="#bastidores" data-nav="3" data-state="pendente"><span class="n">04</span><span class="name">BASTIDORES</span><span class="short">BASTID.</span><span class="st">PENDENTE</span></a></li>
       <li><a class="nav-link" href="#ficha" data-nav="4" data-state="pendente"><span class="n">05</span><span class="name">FICHA DO JOGO</span><span class="short">FICHA</span><span class="st">PENDENTE</span></a></li>
-      <li><a class="nav-link" href="#capitulos" data-nav="5" data-state="pendente"><span class="n">06</span><span class="name">CAPÍTULOS</span><span class="short">CAPÍT.</span><span class="st">PENDENTE</span></a></li>
     </ol>
-    <a class="nav-link nav-report" href="#jogar" data-nav="6" data-state="bloqueado">
-      <span class="n">07</span><span class="name">RELATÓRIO:</span><span class="short">JOGAR</span><span class="st">BLOQUEADO</span>
+    <a class="nav-link nav-report" href="#jogar" data-nav="5" data-state="bloqueado" title="Relatório: jogar">
+      <span class="n">06</span><span class="name">RELATÓRIO:</span><span class="short">JOGAR</span><span class="st">BLOQUEADO</span>
     </a>
-    <p class="nav-foot"><kbd>↑</kbd><kbd>↓</kbd> navegar · <kbd>P</kbd> apresentação</p>
+    <p class="nav-foot"><kbd>↑</kbd><kbd>↓</kbd> navegar · <kbd>P</kbd> apresentação · <kbd>Q</kbd> QR</p>
   </nav>
 
   <!-- Indicador de progresso no canto -->
   <div class="hud">
-    <p class="hud-count"><span class="sr-only">Seção atual: </span>SEÇÃO <b id="hudN">1</b>/7 <span class="hud-name" id="hudName">INÍCIO</span></p>
+    <p class="hud-count"><span class="sr-only">Seção atual: </span>SEÇÃO <b id="hudN">1</b>/<span id="hudT">6</span> <span class="hud-name" id="hudName">INÍCIO</span></p>
     <button class="hud-btn" id="presentBtn" type="button" aria-pressed="false" title="Modo apresentação (tecla P)"><span class="lbl">APRESENTAR [P]</span></button>
   </div>
 
@@ -79,22 +77,18 @@
     <section class="screen hero" id="inicio" data-name="INÍCIO" aria-labelledby="t-inicio">
       <div class="wrap hero-grid">
         <div class="hero-text">
-          <div class="boot" aria-hidden="true">
-            <p>TRACKLINK // TERMINAL INTERNO V.E.R.A. — v1.47</p>
-            <p>&gt; verificando estufa ............ <span class="ok">OK</span></p>
-            <p>&gt; verificando operador .......... <span class="ok">OK</span></p>
-            <p>&gt; carregando expediente ......... <span class="warn">3 PENDÊNCIAS</span></p>
-          </div>
-
-          <p class="typed" data-type="CICLO 147. TRÊS PENDÊNCIAS. ASSINE O RELATÓRIO.">
-            <span class="sr-only">CICLO 147. TRÊS PENDÊNCIAS. ASSINE O RELATÓRIO.</span><span class="typed-out" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span>
-          </p>
+          <p class="hero-kicker">TRACKLINK / TERMINAL INTERNO — V.E.R.A.</p>
 
           <h1 id="t-inicio" class="hero-title" aria-label="Endosymbiosis Protocol">
             <span class="glitch" data-text="ENDOSYMBIOSIS">ENDOSYMBIOSIS</span>
             <span class="glitch" data-text="PROTOCOL">PROTOCOL</span>
           </h1>
-          <p class="hero-sub">terror psicológico point-and-click <span>capítulo 1</span></p>
+
+          <p class="typed" data-type="CICLO 147. TRÊS PENDÊNCIAS. ASSINE O RELATÓRIO.">
+            <span class="sr-only">CICLO 147. TRÊS PENDÊNCIAS. ASSINE O RELATÓRIO.</span><span class="typed-out" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span>
+          </p>
+
+          <p class="hero-sub">terror psicológico point-and-click · capítulo 1</p>
 
           <div class="hero-actions">
             <a class="btn" href="#jogar">▶ Jogar agora</a>
@@ -103,7 +97,7 @@
 
           <p class="credits">
             <img src="assets/img/tracklink-logo.png" alt="" width="22" height="22">
-            <span>Feito por <strong>TRACKLINK</strong> — Isabelli Pedrosa · Sophia Barros · Letícia Alencar · Camily Souza</span>
+            <span>Feito por <strong>TRACKLINK</strong> — Isabelli Pedrosa · Sophia Barros · Letícia Alencar · Camily Sousa</span>
           </p>
         </div>
 
@@ -300,17 +294,18 @@
               <div><b>10</b><span>espaços</span></div>
               <div><b>2</b><span>usos, em alguns</span></div>
             </div>
+            <!-- Itens reais do jogo (cópias em assets/items/). O pó de ouro fica de fora. -->
             <div class="inv-grid" role="group" aria-label="Demonstração do inventário: 10 espaços. Clique num item para selecioná-lo.">
-              <button class="slot" type="button" aria-pressed="false" aria-label="Item: amostra"><span class="px-icon" data-icon="tube"></span></button>
-              <button class="slot" type="button" aria-pressed="false" aria-label="Item: luz UV"><span class="px-icon" data-icon="uv"></span></button>
-              <button class="slot" type="button" aria-pressed="false" aria-label="Item: anotação"><span class="px-icon" data-icon="note"></span></button>
-              <button class="slot" type="button" aria-pressed="false" aria-label="Item não identificado"><span class="px-icon" data-icon="unknown"></span></button>
-              <span class="slot empty" aria-hidden="true"></span>
-              <span class="slot empty" aria-hidden="true"></span>
-              <span class="slot empty" aria-hidden="true"></span>
-              <span class="slot empty" aria-hidden="true"></span>
-              <span class="slot empty" aria-hidden="true"></span>
-              <span class="slot empty" aria-hidden="true"></span>
+              <button class="slot" type="button" aria-pressed="false"><img src="assets/items/amostra.png" alt="Amostra da planta" loading="lazy"></button>
+              <button class="slot" type="button" aria-pressed="false"><img src="assets/items/lamina.png" alt="Lâmina de vidro" loading="lazy"></button>
+              <button class="slot" type="button" aria-pressed="false"><img src="assets/items/pipeta.png" alt="Pipeta" loading="lazy"></button>
+              <button class="slot" type="button" aria-pressed="false"><img src="assets/items/becker.png" alt="Béquer vazio" loading="lazy"></button>
+              <button class="slot" type="button" aria-pressed="false"><img src="assets/items/becker-liquido.png" alt="Béquer com líquido" loading="lazy"></button>
+              <button class="slot" type="button" aria-pressed="false"><img src="assets/items/bisturi.png" alt="Bisturi" loading="lazy"></button>
+              <button class="slot" type="button" aria-pressed="false"><img src="assets/items/luz-uv.png" alt="Lanterna de luz UV" loading="lazy"></button>
+              <button class="slot" type="button" aria-pressed="false"><img src="assets/items/cartao.png" alt="Cartão de acesso" loading="lazy"></button>
+              <button class="slot" type="button" aria-pressed="false"><img src="assets/items/chave-de-boca.png" alt="Chave de boca" loading="lazy"></button>
+              <button class="slot" type="button" aria-pressed="false"><img src="assets/items/dente-de-ouro.png" alt="Dente de ouro" loading="lazy"></button>
             </div>
             <ul class="inv-legend">
               <li><kbd>CLIQUE</kbd> seleciona um item</li>
@@ -463,12 +458,11 @@
               <div><dt>Gênero</dt><dd>Terror psicológico · point-and-click</dd></div>
               <div><dt>Plataforma</dt><dd>Navegador · computador</dd></div>
               <div><dt>Controles</dt><dd>Mouse + teclado</dd></div>
-              <!-- DURAÇÃO: confira e troque este valor se precisar -->
-              <div><dt>Duração</dt><dd>≈ 30 min por capítulo</dd></div>
-              <div><dt>Capítulos</dt><dd>1 jogável · 2 em desenvolvimento</dd></div>
+              <div><dt>Duração</dt><dd>30 minutos a 1 hora</dd></div>
+              <div><dt>Capítulos</dt><dd>Capítulo 1 — completo e jogável</dd></div>
               <div><dt>Motor</dt><dd>GDevelop 5</dd></div>
               <div><dt>Resolução</dt><dd>1920 × 1080 (16:9)</dd></div>
-              <div><dt>Equipe</dt><dd>Tracklink: Isabelli Pedrosa, Sophia Barros, Letícia Alencar e Camily Souza</dd></div>
+              <div><dt>Equipe</dt><dd>Tracklink: Isabelli Pedrosa, Sophia Barros, Letícia Alencar e Camily Sousa</dd></div>
             </dl>
             <div class="label-foot">
               <span class="barcode" aria-hidden="true"></span>
@@ -489,41 +483,7 @@
       </div>
     </section>
 
-    <!-- ============================== 6. CAPÍTULOS ============================== -->
-    <section class="screen" id="capitulos" data-name="CAPITULOS" aria-labelledby="t-cap">
-      <div class="wrap">
-        <header class="sec-head">
-          <p class="cmd"><span class="prompt">&gt;</span> consultar: <b>CAPITULOS.log</b><span class="caret" aria-hidden="true"></span></p>
-          <h2 id="t-cap" class="sec-title glitch" data-text="CAPÍTULOS">CAPÍTULOS</h2>
-        </header>
-
-        <ol class="timeline">
-          <li class="tl-item done reveal">
-            <p class="tl-status">CONCLUÍDO — JOGÁVEL</p>
-            <h3>CAPÍTULO 1</h3>
-            <p>Um expediente completo. Três sistemas, um relatório, nenhuma explicação.</p>
-          </li>
-          <li class="tl-item dev reveal">
-            <p class="tl-status">EM DESENVOLVIMENTO</p>
-            <h3 class="glitch glitch-loop" data-text="CAPÍTULO 2">CAPÍTULO 2</h3>
-            <p>Começa no mesmo turno de trabalho. Desta vez, <span class="flicker">o sistema começa a falhar</span>.</p>
-          </li>
-          <li class="tl-item na reveal">
-            <p class="tl-status">[DADOS INDISPONÍVEIS]</p>
-            <h3>CAPÍTULO 3</h3>
-            <p class="bars" aria-label="Conteúdo indisponível"><span style="width:82%"></span><span style="width:56%"></span></p>
-          </li>
-          <li class="tl-item na reveal">
-            <p class="tl-status">[DADOS INDISPONÍVEIS]</p>
-            <h3>CAPÍTULO ?</h3>
-            <p class="bars" aria-label="Conteúdo indisponível"><span style="width:64%"></span></p>
-          </li>
-        </ol>
-        <blockquote class="vera vera-wide reveal"><p>SEU NOME FOI REGISTRADO PARA OS PRÓXIMOS CICLOS.</p></blockquote>
-      </div>
-    </section>
-
-    <!-- ============================== 7. JOGAR ============================== -->
+    <!-- ============================== 6. JOGAR ============================== -->
     <section class="screen play" id="jogar" data-name="RELATORIO" aria-labelledby="t-jogar">
       <div class="wrap">
         <header class="sec-head">
@@ -547,7 +507,7 @@
               <div class="game-cover" id="gameCover">
                 <img src="assets/img/capa.png" alt="" loading="lazy" width="1920" height="1080">
                 <div class="cover-ui">
-                  <button class="btn btn-big" id="startGame" type="button">▶ INICIAR PROTOCOLO</button>
+                  <button class="btn btn-start" id="startGame" type="button">▶ Iniciar protocolo</button>
                   <p class="cover-note">Carrega cerca de 54 MB. O som liga junto.</p>
                   <p class="cover-error" id="gameError" role="alert" hidden></p>
                 </div>
@@ -566,10 +526,16 @@
               </div>
 
               <p class="fs-hint" aria-hidden="true">ESC para sair da tela cheia</p>
+              <!-- Botão de música que aparece só dentro da tela cheia -->
+              <button class="music-btn music-fs" type="button" data-music aria-pressed="true" title="Música ligada / desligada"><span class="px-icon" data-icon="music"></span><span class="sr-only">Música</span></button>
             </div>
+
+            <!-- Trilha do jogo, tocada pelo site (só com o jogo em tela cheia) -->
+            <audio id="bgm" preload="none" loop src="game/e8996563ea8cfe43ac6ddd72f3138b70cfac1eecbb7cb1eb3bc7010174be3121-trilha_suite_leve.ogg"></audio>
 
             <div class="monitor-foot">
               <button class="btn btn-small" id="fsBtn" type="button">⛶ Tela cheia</button>
+              <button class="music-btn" type="button" data-music aria-pressed="true" title="Música ligada / desligada"><span class="px-icon" data-icon="music"></span><span class="music-lbl">Música</span></button>
               <p class="hint">ESC sai da tela cheia · <kbd>M</kbd> abre o menu de save</p>
             </div>
           </div>
@@ -584,10 +550,12 @@
                  1) salve a imagem como assets/img/qrcode.png
                  2) apague a linha <div class="qr-placeholder">...</div> abaixo
                  3) no lugar dela, cole:
-                    <img src="assets/img/qrcode.png" alt="QR code para abrir o site do jogo" width="200" height="200"> -->
-            <div class="qr">
+                    <img src="assets/img/qrcode.png" alt="QR code para abrir o site do jogo" width="200" height="200">
+                 (a versão ampliada copia daqui sozinha, não precisa trocar em outro lugar) -->
+            <div class="qr" id="qrSource">
               <div class="qr-placeholder" aria-label="QR code em breve"><span>QR CODE</span><small>— em breve —</small></div>
             </div>
+            <button class="btn btn-ghost btn-small" id="qrOpen" type="button">Ampliar QR code</button>
           </aside>
         </div>
 
@@ -595,7 +563,7 @@
           <img src="assets/img/tracklink-logo.png" alt="Logo da Tracklink" width="36" height="36" loading="lazy">
           <div>
             <p><strong>TRACKLINK</strong> · <span id="year">2026</span></p>
-            <p>Isabelli Pedrosa · Sophia Barros · Letícia Alencar · Camily Souza</p>
+            <p>Isabelli Pedrosa · Sophia Barros · Letícia Alencar · Camily Sousa</p>
             <p>Endosymbiosis Protocol · feito com GDevelop 5</p>
           </div>
           <p class="foot-end">FIM DO REGISTRO<span class="caret" aria-hidden="true"></span></p>
@@ -603,6 +571,16 @@
       </div>
     </section>
   </main>
+
+  <!-- QR code ampliado (tecla Q). O conteúdo é copiado do QR da seção Jogar. -->
+  <div class="qr-overlay" id="qrOverlay" role="dialog" aria-modal="true" aria-labelledby="qrTitle" hidden>
+    <div class="qr-box">
+      <p class="qr-title" id="qrTitle">&gt; acessar de um computador</p>
+      <div class="qr-big" id="qrBig"></div>
+      <p class="qr-url" id="qrUrl"></p>
+      <button class="btn btn-small" id="qrClose" type="button">Fechar [ESC]</button>
+    </div>
+  </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>

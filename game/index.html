@@ -216,6 +216,15 @@
             if (vars.has("saindo")) vars.get("saindo").setBoolean(false);
         });
 
+        //Música da trilha é tocada pelo site (fora do jogo): ignora o playMusic dela aqui
+        (function () {
+            var snd = gdjs.evtTools.sound, original = snd.playMusicOnChannel;
+            snd.playMusicOnChannel = function (scene, file) {
+                if (file === "trilha_suite_leve.ogg") return;
+                return original.apply(this, arguments);
+            };
+        })();
+
         //Initialization
         var game = new gdjs.RuntimeGame(gdjs.projectData, gdjs.runtimeGameOptions);
 

@@ -32,210 +32,29 @@
   }
 
   /* ---------------------------------------------------------
-     Ícones em pixel art (# = pixel aceso)
+     Ícones
      --------------------------------------------------------- */
   var ICONS = {
-    micro: [
-      '.....##.....',
-      '.....##.....',
-      '....####....',
-      '.....##.....',
-      '.....##..##.',
-      '.....##...#.',
-      '....####..#.',
-      '..........#.',
-      '...######.#.',
-      '.....##..#..',
-      '...######...',
-      '.##########.'
-    ],
-    drop: [
-      '.....##.....',
-      '.....##.....',
-      '....####....',
-      '....####....',
-      '...######...',
-      '..########..',
-      '..##.#####..',
-      '.##.#######.',
-      '.##.#######.',
-      '.##########.',
-      '..########..',
-      '...######...'
-    ],
-    bolt: [
-      '......####..',
-      '.....####...',
-      '....####....',
-      '...####.....',
-      '..########..',
-      '.....####...',
-      '....####....',
-      '...####.....',
-      '..###.......',
-      '.##.........',
-      '##..........',
-      '............'
-    ],
-    tube: [
-      '...######...',
-      '....#..#....',
-      '....#..#....',
-      '....#..#....',
-      '....#..#....',
-      '....#..#....',
-      '....####....',
-      '....####....',
-      '....####....',
-      '....####....',
-      '.....##.....',
-      '............'
-    ],
-    safe: [
-      '############',
-      '#..........#',
-      '#.########.#',
-      '#.#......#.#',
-      '#.#..##..#.#',
-      '#.#.#..#.###',
-      '#.#.#..#.###',
-      '#.#..##..#.#',
-      '#.#......#.#',
-      '#.########.#',
-      '#..........#',
-      '############'
-    ],
-    plant: [
-      '......##....',
-      '....####....',
-      '...###.#....',
-      '.....#..##..',
-      '.##..#.###..',
-      '.###.#.##...',
-      '..####......',
-      '.....#......',
-      '..########..',
-      '...######...',
-      '...######...',
-      '....####....'
-    ],
-    uv: [
-      '#....#....#.',
-      '.#...#...#..',
-      '............',
-      '..########..',
-      '..#......#..',
-      '..########..',
-      '...######...',
-      '....####....',
-      '....####....',
-      '....####....',
-      '....####....',
-      '.....##.....'
-    ],
-    note: [
-      '#########...',
-      '#.......##..',
-      '#.######.##.',
-      '#..........#',
-      '#.########.#',
-      '#..........#',
-      '#.#######..#',
-      '#..........#',
-      '#.######...#',
-      '#..........#',
-      '#..........#',
-      '############'
-    ],
-    unknown: [
-      '....####....',
-      '...##..##...',
-      '...##..##...',
-      '.......##...',
-      '......##....',
-      '.....##.....',
-      '.....##.....',
-      '............',
-      '.....##.....',
-      '.....##.....',
-      '............',
-      '............'
-    ],
-    drawer: [
-      '############',
-      '#..........#',
-      '#...####...#',
-      '#..........#',
-      '############',
-      '#..........#',
-      '#...####...#',
-      '#..........#',
-      '############',
-      '#..........#',
-      '#...####...#',
-      '############'
-    ],
-    lock: [
-      '....####....',
-      '...#....#...',
-      '..#......#..',
-      '..#......#..',
-      '..#......#..',
-      '############',
-      '#..........#',
-      '#....##....#',
-      '#....##....#',
-      '#.....#....#',
-      '#..........#',
-      '############'
-    ],
-    mouse: [
-      '...######...',
-      '..#...#..#..',
-      '..#...#..#..',
-      '..#...#..#..',
-      '..########..',
-      '..#......#..',
-      '..#......#..',
-      '..#......#..',
-      '..#......#..',
-      '...######...',
-      '............',
-      '............'
-    ],
-    keyboard: [
-      '............',
-      '............',
-      '############',
-      '#.#.#.#.#.##',
-      '############',
-      '##.#.#.#.#.#',
-      '############',
-      '#.##......##',
-      '############',
-      '............',
-      '............',
-      '............'
-    ]
+    micro: '<path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/>',
+    drop: '<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>',
+    bolt: '<path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>',
+    tube: '<path d="M14.5 2v17.5c0 1.4-1.1 2.5-2.5 2.5s-2.5-1.1-2.5-2.5V2"/><path d="M8.5 2h7"/><path d="M14.5 16h-5"/>',
+    safe: '<rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M12 9V7"/><path d="M12 17v-2"/><path d="M9 12H7"/><path d="M17 12h-2"/><path d="M7 21v1"/><path d="M17 21v1"/>',
+    plant: '<path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>',
+    uv: '<path d="M18 6c0 2-2 2-2 4v10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V10c0-2-2-2-2-4V2h12z"/><path d="M6 6h12"/><path d="M12 12v2"/>',
+    drawer: '<rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/>',
+    lock: '<rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+    mouse: '<rect x="5" y="2" width="14" height="20" rx="7"/><path d="M12 6v4"/>',
+    keyboard: '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="M6 8h.01"/><path d="M10 8h.01"/><path d="M14 8h.01"/><path d="M18 8h.01"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/><path d="M7 16h10"/>',
+    music: '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+    'music-off': '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><path d="M2 2l20 20"/>'
   };
 
+  // Ícones de linha (estilo Lucide), desenhados aqui mesmo, sem CDN
   function iconSVG(name) {
-    var rows = ICONS[name];
-    if (!rows) return '';
-    var w = rows[0].length, h = rows.length, d = '';
-    rows.forEach(function (row, y) {
-      var x = 0;
-      while (x < w) {
-        if (row[x] === '#') {
-          var start = x;
-          while (x < w && row[x] === '#') x++;
-          d += 'M' + start + ' ' + y + 'h' + (x - start) + 'v1h-' + (x - start) + 'z';
-        } else {
-          x++;
-        }
-      }
-    });
-    return '<svg viewBox="0 0 ' + w + ' ' + h + '" aria-hidden="true" focusable="false" shape-rendering="crispEdges"><path fill="currentColor" d="' + d + '"/></svg>';
+    var body = ICONS[name];
+    if (!body) return '';
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + body + '</svg>';
   }
   $$('[data-icon]').forEach(function (el) { el.innerHTML = iconSVG(el.getAttribute('data-icon')); });
 
@@ -257,7 +76,7 @@
         setTimeout(tick, ch === '.' ? 420 : 38 + Math.random() * 45);
       }
     }
-    setTimeout(tick, 1300);
+    setTimeout(tick, 700);
   })();
 
   /* ---------------------------------------------------------
@@ -473,6 +292,7 @@
   var hudN = $('#hudN');
   var hudName = $('#hudName');
   var LAST = sections.length - 1;
+  $('#hudT').textContent = sections.length;
   var LABELS = {
     pendente: 'PENDENTE', atual: 'EM CURSO', concluido: 'CONCLUÍDO',
     bloqueado: 'BLOQUEADO', liberado: 'LIBERADO'
@@ -586,6 +406,8 @@
   var presentBtn = $('#presentBtn');
   function isPresenting() { return root.classList.contains('presenting'); }
   function setPresent(on) {
+    // Já está no modo apresentação mas saiu da tela cheia (ex.: ESC no QR): só volta para a tela cheia
+    if (on && isPresenting()) { requestFs(root); return; }
     var keep = Math.max(0, current);
     root.classList.toggle('presenting', on);
     presentBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
@@ -603,6 +425,11 @@
     }, 120);
   }
   presentBtn.addEventListener('click', function () { setPresent(!isPresenting()); });
+  // Tecla P: liga; se já estiver ligado e na tela cheia, desliga
+  function togglePresent() {
+    if (isPresenting() && fsElement() !== root) setPresent(true);
+    else setPresent(!isPresenting());
+  }
 
   /* ---------------------------------------------------------
      O jogo
@@ -654,6 +481,7 @@
         frame.addEventListener('load', focusGame, { once: true });
         frame.setAttribute('src', GAME_URL);
         focusGame();
+        syncMusic(); // se o jogo já abriu em tela cheia, a trilha começa
       })
       .catch(function () {
         showError('ARQUIVO DO JOGO NÃO ENCONTRADO. Confira se o index.html do jogo está direto dentro da pasta game/.');
@@ -688,11 +516,102 @@
       if (started) setTimeout(focusGame, 60);
     }
     // ESC na tela cheia da página encerra o modo apresentação
-    if (!el && lastFs === root && isPresenting()) setPresent(false);
+    // (se o QR ampliado estava aberto, o ESC só fecha o QR; P volta para a tela cheia)
+    if (!el && lastFs === root && isPresenting()) {
+      if (qrIsOpen()) closeQR();
+      else setPresent(false);
+    }
     lastFs = el;
+    syncMusic();
   }
   document.addEventListener('fullscreenchange', onFsChange);
   document.addEventListener('webkitfullscreenchange', onFsChange);
+
+  /* ---------------------------------------------------------
+     Trilha sonora (tocada pelo site, não pelo jogo)
+     Toca só com o jogo rodando E em tela cheia.
+     --------------------------------------------------------- */
+  var bgm = $('#bgm');
+  var musicBtns = $$('[data-music]');
+  var MUSIC_VOL = 0.35;
+  var musicOn = true;
+  try { musicOn = localStorage.getItem('endo-musica') !== 'off'; } catch (e) { /* sem localStorage */ }
+  var fadeId = 0;
+
+  function fadeTo(target, done) {
+    var id = ++fadeId;
+    var from = bgm.volume;
+    var t0 = performance.now();
+    var DUR = 500;
+    (function frame(now) {
+      if (id !== fadeId) return;
+      var k = Math.min(1, (now - t0) / DUR);
+      bgm.volume = from + (target - from) * k;
+      if (k < 1) requestAnimationFrame(frame);
+      else if (done) done();
+    })(t0);
+  }
+
+  function syncMusic() {
+    if (!bgm) return;
+    var shouldPlay = musicOn && started && fsElement() === stage && !document.hidden;
+    if (shouldPlay) {
+      if (bgm.paused) {
+        bgm.volume = 0;
+        var p = bgm.play();
+        if (p && p.catch) p.catch(function () {});
+      }
+      fadeTo(MUSIC_VOL);
+    } else if (!bgm.paused) {
+      fadeTo(0, function () { bgm.pause(); });
+    }
+  }
+
+  function paintMusicBtns() {
+    musicBtns.forEach(function (b) {
+      b.setAttribute('aria-pressed', musicOn ? 'true' : 'false');
+      $('.px-icon', b).innerHTML = iconSVG(musicOn ? 'music' : 'music-off');
+      var lbl = $('.music-lbl', b);
+      if (lbl) lbl.textContent = musicOn ? 'Música' : 'Sem música';
+    });
+  }
+
+  musicBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      musicOn = !musicOn;
+      try { localStorage.setItem('endo-musica', musicOn ? 'on' : 'off'); } catch (e) { /* nada */ }
+      paintMusicBtns();
+      syncMusic();
+      if (started) focusGame(); // devolve o teclado para o jogo
+    });
+  });
+  paintMusicBtns();
+  document.addEventListener('visibilitychange', syncMusic);
+
+  /* ---------------------------------------------------------
+     QR code ampliado (botão ou tecla Q)
+     --------------------------------------------------------- */
+  var qrOverlay = $('#qrOverlay');
+  var qrOpenBtn = $('#qrOpen');
+  var qrReturnFocus = null;
+  function qrIsOpen() { return !qrOverlay.hidden; }
+  function openQR() {
+    if (qrIsOpen()) return;
+    // Copia o QR (imagem ou placeholder) da seção Jogar: troca-se num lugar só
+    $('#qrBig').innerHTML = $('#qrSource').innerHTML;
+    $('#qrUrl').textContent = siteUrl();
+    qrReturnFocus = document.activeElement;
+    qrOverlay.hidden = false;
+    $('#qrClose').focus();
+  }
+  function closeQR() {
+    if (!qrIsOpen()) return;
+    qrOverlay.hidden = true;
+    if (qrReturnFocus && qrReturnFocus.focus) qrReturnFocus.focus();
+  }
+  qrOpenBtn.addEventListener('click', openQR);
+  $('#qrClose').addEventListener('click', closeQR);
+  qrOverlay.addEventListener('click', function (e) { if (e.target === qrOverlay) closeQR(); });
 
   // Celular / tablet sem mouse: mostra o aviso de acesso negado
   var mobileMQ = window.matchMedia('(hover: none) and (pointer: coarse), (max-width: 699px)');
@@ -764,9 +683,18 @@
     var k = e.key;
     var onControl = a && a !== document.body && /^(BUTTON|A|SUMMARY)$/.test(a.tagName);
 
+    // Com o QR ampliado aberto, só ESC e Q (fechar) funcionam
+    if (qrIsOpen()) {
+      if (k === 'Escape' || k === 'q' || k === 'Q') { e.preventDefault(); closeQR(); }
+      return;
+    }
+
     if (k === 'p' || k === 'P') {
       e.preventDefault();
-      setPresent(!isPresenting());
+      togglePresent();
+    } else if (k === 'q' || k === 'Q') {
+      e.preventDefault();
+      openQR();
     } else if (k === 'Escape') {
       if (isPresenting() && !fsElement()) setPresent(false);
     } else if (k === 'ArrowDown' || k === 'ArrowRight' || k === 'PageDown' || (k === ' ' && !e.shiftKey && !onControl)) {
